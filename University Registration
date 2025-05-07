@@ -1,0 +1,61 @@
+UniversityRegistrationSystem.java
+
+// UniversityRegistrationSystem.java
+// A simple student registration system for a university
+
+import java.util.*;
+
+public class UniversityRegistrationSystem {
+    static class Student {
+        String id, name, course;
+
+        Student(String id, String name, String course) {
+            this.id = id;
+            this.name = name;
+            this.course = course;
+        }
+
+        @Override
+        public String toString() {
+            return id + " - " + name + " - " + course;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Student> students = new ArrayList<>();
+
+        while (true) {
+            System.out.println("\nUniversity Registration System");
+            System.out.println("1. Register Student");
+            System.out.println("2. View Registered Students");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            if (choice == 1) {
+                System.out.print("Enter Student ID: ");
+                String id = scanner.nextLine();
+                System.out.print("Enter Student Name: ");
+                String name = scanner.nextLine();
+                System.out.print("Enter Course: ");
+                String course = scanner.nextLine();
+                students.add(new Student(id, name, course));
+                System.out.println("Student registered successfully!");
+            } else if (choice == 2) {
+                System.out.println("\nList of Registered Students:");
+                for (Student s : students) {
+                    System.out.println(s);
+                }
+            } else if (choice == 3) {
+                System.out.println("Exiting system. Goodbye!");
+                break;
+            } else {
+                System.out.println("Invalid option.");
+            }
+        }
+
+        scanner.close();
+    }
+}
